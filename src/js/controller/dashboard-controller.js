@@ -36,20 +36,23 @@ define(
             var el;
 
             $timeout(function() {
-              el = $compile(table)($scope)
-            }).then(function() {
 
+              el = $compile(table)($scope);
+
+            }).then(function() {
+              var compiledHtml = '';
               $timeout(function() {
-                var compiledHtml = '';
+
                 for (var i = 0; i < el.length; i++) {
                   compiledHtml += el[i].outerHTML;
                 }
+
+              }).then(function() {
 
                 details.editor.insertHtml(compiledHtml);
 
               });
             });
-
 
           });
 
